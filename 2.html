@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+	<title></title>
+		<title>Up and runing with Angular!</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+	<script type="text/javascript" src="js/controller.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<div ng-controller="ctrl">
+<div ng-init="persons=[
+{name:'abanoub',age:24,job:'developer'},
+{name:'kerolos',age:20,job:'student'},
+{name:'mina',age:25,job:'banker'}
+]"></div>
+<input ng-model="name" ng-init="obj={firstname:'mina',lastname:'ghali',works:['kiriazi',2,3,4,['pepo','mina','marco'] ]};age=24">
+<p>{{name}}</p>
+<h3>my name is {{obj.firstname+' '+obj.lastname}} and i am {{age}} years old</h3>
+<h4>i have finished up to {{ obj.works.length }} projects</h4>
+<h4>and my first work is {{ obj.works[0] }}</h4>
+<h4>i am displaying array from another array {{ obj.works[4][1] }}</h4>
+<ul>
+	<li ng-repeat="x in obj.works[4]">
+		{{x}}
+	</li>
+</ul>
+<br>
+<ul>
+	<li ng-repeat="person in persons">my name is {{person.name}} and i am {{person.age}} years old , i am {{person.job}}</li>
+</ul>
+</div>
+
+
+
+<div ng-controller="ctrl2">
+	<p>name is {{name}}</p>
+	<p>job is {{job}}</p>
+	<p>description is {{desc()}}</p>
+	<p>display array item {{arr[2]}}</p>
+	<p>The name is {{ name | uppercase  }}</p>
+	<input type="text" ng-model="filter" >
+	<ul>
+		<li ng-repeat="x in people | filter:filter | orderBy:'name'">{{x.name | uppercase}}</li>
+	</ul>
+</div>
+
+
+<div ng-controller="fromjson">
+	<ul>
+		<li ng-repeat="person in people">
+			name : {{person.Name}} , city : {{person.City}} , country : {{person.Country}}
+		</li>
+	</ul>
+</div>
+
+</body>
+</html>
